@@ -28,7 +28,7 @@ export default function BlogCard({ post }) {
             {post.summary}
           </p>
           <span className="font-semibold text-green-600 group-hover:underline">
-            Leer Más →
+            Leer Más  →
           </span>
         </div>
       </div>
