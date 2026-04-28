@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Variante simple para que el grupo de filtros aparezca
+// Variante simple para que el grupo de filtros aparezca 
 const groupVariants = {
   hidden: { opacity: 0, x: -20 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } }
