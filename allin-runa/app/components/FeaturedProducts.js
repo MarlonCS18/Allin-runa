@@ -5,7 +5,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link'; // Importamos Link
 
-// --- Variantes de Animación (Sin cambios) ---
+// --- Variantes de Animación (Sin cambios)  ---
 const gridVariants = {
   hidden: { opacity: 0 },
   visible: {
