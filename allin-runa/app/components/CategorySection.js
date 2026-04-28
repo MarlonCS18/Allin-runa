@@ -5,7 +5,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link'; // <--- IMPORTANTE: Usar Link de Next.js
 
-// --- (Variantes de Animación - sin cambios) ---
+// --- (Variantes de Animación  - sin cambios) ---
 const gridVariants = {
   hidden: { opacity: 0 },
   visible: {
