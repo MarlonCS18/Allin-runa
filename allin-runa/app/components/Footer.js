@@ -19,7 +19,7 @@ export default function Footer() {
     <footer className="bg-gray-900 text-gray-400 pt-20 pb-10"> {/* Más padding arriba */}
       
       {/* ¡AQUÍ ESTÁ EL CAMBIO!
-        1. Quitamos 'max-w-6xl' y 'mx-auto'.
+        1. Quitamos 'max-w-6xl' y 'mx-auto'. 
         2. Añadimos 'px-24' (padding grande a los lados) para que sea full-width.
         3. Cambiamos a 'grid-cols-5' (5 columnas).
       */}
