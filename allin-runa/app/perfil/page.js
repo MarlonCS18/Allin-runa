@@ -1,36 +1,15 @@
+// app/perfil/page.js
 "use client";
 
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '../context/AuthContext';
-import { useCart } from '../context/CartContext'; // <-- 1. IMPORTAR useCart
+import React from 'react';
 import { UserCircleIcon } from '@heroicons/react/24/solid';
 
 export default function PerfilPage() {
-  const { user, isAuthenticated, loading, logout } = useAuth();
-  const { clearCart } = useCart(); // <-- 2. OBTENER clearCart
-  const router = useRouter();
+  // Datos simulados para la estructura inicial
+  const user = { nombre: 'Usuario', email: 'usuario@correo.com' };
 
-  // --- Proteger la Ruta ---
-  useEffect(() => {
-    if (!loading && !isAuthenticated) {
-      router.push('/login'); // Redirigir si no está logueado
-    }
-  }, [isAuthenticated, loading, router]);
-
-  // --- Estado de Carga ---
-  if (loading || !user) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Cargando perfil...
-      </div>
-    );
-  }
-
-  // --- 3. FUNCIÓN DE LOGOUT PERSONALIZADA ---
   const handleLogout = () => {
-    clearCart(); // Limpiar el carrito
-    logout();    // Cerrar la sesión del usuario
+    console.log("Simulando cierre de sesión...");
   };
 
   return (
@@ -95,10 +74,10 @@ export default function PerfilPage() {
           </form>
         </div>
 
-        {/* --- 4. BOTÓN DE CERRAR SESIÓN ACTUALIZADO --- */}
+        {/* Botón de Cerrar Sesión */}
         <div className="mt-8 text-center">
             <button
-                onClick={handleLogout} // <-- Usar la nueva función
+                onClick={handleLogout}
                 className="text-red-600 hover:text-red-800 font-medium"
             >
                 Cerrar Sesión
