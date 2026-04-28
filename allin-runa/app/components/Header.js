@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Contextos ---
-import { useCart } from '../context/CartContext'; // <-- ¡IMPORTADO!
+import { useCart } from '../context/CartContext'; // <-- ¡IMPORTADO! 
 import { useAuth } from '../context/AuthContext'; 
 
 // --- Íconos ---
