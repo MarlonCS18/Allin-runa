@@ -1,56 +1,9 @@
 // app/nosotros/page.js
-"use client"; // NUEVO: Necesario para que las animaciones funcionen
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion'; // NUEVO: Importar 'motion'
 
 import OriginDetailCard from '../components/OriginDetailCard'; 
-
-// --- NUEVO: Definimos todas las animaciones que usaremos ---
-
-// 1. Deslizar desde Abajo (la clásica)
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' }}
-};
-
-// 2. Deslizar desde Arriba (para el título del Hero)
-const fadeInDown = {
-  hidden: { opacity: 0, y: -30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' }}
-};
-
-// 3. Deslizar desde la Izquierda (para la imagen de "Historia")
-const fadeInLeft = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' }}
-};
-
-// 4. Deslizar desde la Derecha (para el texto de "Historia")
-const fadeInRight = {
-  hidden: { opacity: 0, x: 30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' }}
-};
-
-// 5. Escalar y Aparecer (para las tarjetas de Orígenes)
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: 'easeOut' }}
-};
-
-// 6. Contenedor "Stagger" (para animar hijos en cascada)
-const staggerContainer = {
-  hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3 // Retraso de 0.3s entre cada hijo
-    }
-  }
-};
-// ----------------------------------------------------
-
 
 const regionsData = [
   {
@@ -93,9 +46,7 @@ export default function NosotrosPage() {
     <main className="flex flex-col items-center">
 
       {/* --- SECCIÓN 1: MANIFIESTO (EL GANCHO) --- */}
-      <section 
-        className="relative w-full h-[110vh] flex items-center justify-center text-white -mt-16"
-      >
+      <section className="relative w-full h-[110vh] flex items-center justify-center text-white -mt-16">
         <Image
           src="/img/producers/nosotro-hero.jpg" 
           alt="Campo de cultivo al amanecer"
@@ -103,45 +54,20 @@ export default function NosotrosPage() {
           objectFit="cover"
           className="brightness-50" 
         />
-        {/* NUEVO: Contenedor 'stagger' para el Hero */}
-        <motion.div 
-          className="relative z-10 max-w-3xl p-4 w-full h-full flex flex-col justify-start pt-32"
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* NUEVO: Título usa 'fadeInDown' */}
-          <motion.h1 
-            className="text-6xl md:text-7xl font-extrabold text-center mb-75" // (Corregí tu 'mb-75' a 'mb-32' que sí existe en Tailwind)
-            variants={fadeInDown} 
-          >
+        <div className="relative z-10 max-w-3xl p-4 w-full h-full flex flex-col justify-start pt-32">
+          <h1 className="text-6xl md:text-7xl font-extrabold text-center mb-32">
             Las Manos que nos Nutren
-          </motion.h1>
-
-          {/* NUEVO: Subtítulo usa 'fadeInUp' */}
-          <motion.p 
-            className="text-2xl md:text-3xl text-center"
-            variants={fadeInUp}
-          >
+          </h1>
+          <p className="text-2xl md:text-3xl text-center">
             Honramos a cada productor de la Costa, Sierra y Selva, creando un puente de comercio justo directamente hasta tu hogar.
-          </motion.p>
-          
-        </motion.div>
+          </p>
+        </div>
       </section>
 
       {/* --- SECCIÓN 2: NUESTRA HISTORIA --- */}
       <section className="w-full max-w-6xl px-4 py-20 mx-auto">
-        {/* NUEVO: 'div' de la cuadrícula usa 'staggerContainer' */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          
-          {/* NUEVO: Columna Izquierda usa 'fadeInLeft' */}
-          <motion.div variants={fadeInLeft}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
             <Image
               src="/img/producers/equipo.jpg" 
               alt="Equipo de Allin Runa"
@@ -151,68 +77,44 @@ export default function NosotrosPage() {
               objectFit="cover"
               className="rounded-lg shadow-lg"
             />
-          </motion.div>
+          </div>
           
-          {/* NUEVO: Columna Derecha usa 'fadeInRight' */}
-          <motion.div className="text-left" variants={fadeInRight}>
+          <div className="text-left">
             <h2 className="text-4xl font-bold mb-6">Nuestra Historia</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
               Allin Runa nació de una pregunta simple: ¿Por qué es tan difícil encontrar comida que sea buena para nosotros y buena para el planeta? Empezamos este viaje para reconectar con la tierra y con las manos que la trabajan. Dejamos nuestros trabajos de oficina para recorrer el Perú, buscando a los verdaderos guardianes de la salud: los agricultores orgánicos y sostenibles. Nuestro compromiso es asegurar que cada producto cuente una historia de integridad desde su origen hasta tu mesa.
             </p>
-          </motion.div>
-
-        </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* --- SECCIÓN 3: NUESTROS ORÍGENES --- */}
       <section className="w-full py-20"> 
-        {/* NUEVO: Título usa 'fadeInUp' (esta está bien) */}
-        <motion.div 
-          className="text-center max-w-3xl mx-auto px-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeInUp}
-        >
+        <div className="text-center max-w-3xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-6">
             Nuestros Orígenes: Costa, Sierra y Selva
           </h2>
           <p className="text-lg text-gray-700 leading-relaxed mb-16">
             La magia de Allin Runa nace en la tierra. Te invitamos a un viaje por las tres regiones que definen nuestro sabor y calidad, y a conocer el trabajo de los productores que lo hacen posible.
           </p>
-        </motion.div>
+        </div>
         
         <div className="flex flex-col gap-12">
           {regionsData.map((region) => (
-            // NUEVO: Tarjetas de Origen usan 'scaleIn'
-            <motion.div 
-              key={region.regionName} 
-              id={region.id} 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={scaleIn} // <-- ¡Animación de Escala!
-            >
+            <div key={region.regionName} id={region.id}>
               <OriginDetailCard
                 regionName={region.regionName}
                 backgroundImage={region.backgroundImage}
                 description={region.description}
                 products={region.products}
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* --- SECCIÓN 4: EL CIERRE (NEWSLETTER) --- */}
-      {/* NUEVO: CTA final usa 'fadeInUp' (clásico y limpio) */}
-      <motion.section 
-        className="w-full bg-gray-100 py-24 text-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInUp}
-      >
+      <section className="w-full bg-gray-100 py-24 text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-4xl font-bold mb-6">Únete a la Comunidad Allin Runa</h2>
           <p className="text-lg text-gray-700 leading-relaxed mb-10">
@@ -234,7 +136,7 @@ export default function NosotrosPage() {
             </button>
           </form>
         </div>
-      </motion.section>
+      </section>
 
     </main>
   );
