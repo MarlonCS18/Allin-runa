@@ -62,7 +62,9 @@ const regionsData = [
       { name: "Pescado Seco", img: "/img/products/pescado-seco.webp" },
       { name: "Algarrobina", img: "/img/products/algarrobina.webp" },
       { name: "Espárragos", img: "/img/products/esparragos.webp" }
-    ] 
+    ],
+    icon: "🌊", // MEJORA: ícono representativo - Mia Coronel
+    productores: 25 // MEJORA: cantidad de productores aliados - Mia Coronel
   },
   {
     id: "sierra",
@@ -73,7 +75,9 @@ const regionsData = [
       { name: "Quinua Orgánica", img: "/img/products/quinua.webp" },
       { name: "Maca", img: "/img/products/maca.webp" },
       { name: "Kiwicha", img: "/img/products/kiwicha.webp" }
-    ]
+    ],
+    icon: "⛰️", // MEJORA: ícono representativo - Mia Coronel
+    productores: 42 // MEJORA: cantidad de productores aliados - Mia Coronel
   },
   {
     id: "selva", 
@@ -84,7 +88,9 @@ const regionsData = [
       { name: "Cacao Puro", img: "/img/products/cacao.webp" },
       { name: "Café de Altura", img: "/img/products/cafe.webp" },
       { name: "Camu Camu", img: "/img/products/camu-camu.webp" }
-    ]
+    ],
+    icon: "🌴", // MEJORA: ícono representativo - Mia Coronel
+    productores: 38 // MEJORA: cantidad de productores aliados - Mia Coronel
   }
 ];
 
