@@ -1,9 +1,13 @@
 // app/preguntas-frecuentes/page.js
-import React from 'react';
+"use client"; // Necesario para 'useState' y 'framer-motion'
+
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 // --- Contenido de las Preguntas ---
+// (Añadimos muchas preguntas como pediste, separadas por categoría)
 const faqData = [
   {
     category: "Pedidos y Pagos",
@@ -71,20 +75,58 @@ const faqData = [
   }
 ];
 
-// --- Componente Estático ---
-const StaticAccordionItem = ({ question, answer }) => {
+// --- Componente de Acordeón Reutilizable ---
+const AccordionItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Variantes para la animación de la respuesta
+  const answerVariants = {
+    collapsed: { opacity: 0, height: 0, marginTop: 0, marginBottom: 0 },
+    open: { 
+      opacity: 1, 
+      height: 'auto',
+      marginTop: '1rem', // 16px
+      marginBottom: '1rem' // 16px
+    }
+  };
+
   return (
     <div className="border-b border-gray-200 py-4">
-      <div className="flex justify-between items-center w-full text-left">
+      {/* 1. El Botón (La Pregunta) */}
+      <motion.button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex justify-between items-center w-full text-left"
+        aria-expanded={isOpen}
+      >
         <span className="text-lg font-medium text-gray-900">{question}</span>
-        <ChevronDownIcon className="w-6 h-6 text-gray-500" />
-      </div>
-      <div className="mt-4">
-        <p className="text-gray-700 leading-relaxed">{answer}</p>
-      </div>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }} // Anima el ícono
+          transition={{ duration: 0.3 }}
+        >
+          <ChevronDownIcon className="w-6 h-6 text-gray-500" />
+        </motion.div>
+      </motion.button>
+      
+      {/* 2. La Respuesta (Animada) */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="answer"
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={answerVariants}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden" // Importante para que height: 0 funcione
+          >
+            <p className="text-gray-700 leading-relaxed">{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
+
 
 // --- Componente Principal de la Página ---
 export default function PreguntasFrecuentesPage() {
@@ -103,7 +145,7 @@ export default function PreguntasFrecuentesPage() {
           </p>
         </div>
 
-        {/* Contenido */}
+        {/* Contenido del Acordeón */}
         <div className="space-y-12">
           {faqData.map((categoryGroup) => (
             <div key={categoryGroup.category}>
@@ -112,8 +154,9 @@ export default function PreguntasFrecuentesPage() {
                 {categoryGroup.category}
               </h2>
               <div className="space-y-2">
+                {/* Mapeo de las preguntas de esa categoría */}
                 {categoryGroup.questions.map((faq) => (
-                  <StaticAccordionItem 
+                  <AccordionItem 
                     key={faq.question} 
                     question={faq.question} 
                     answer={faq.answer} 
@@ -133,7 +176,7 @@ export default function PreguntasFrecuentesPage() {
             No te preocupes. Nuestro equipo de soporte está listo para ayudarte.
           </p>
           <Link 
-            href="/contacto"
+            href="/contacto" // (Asegúrate de tener esta página o cámbiala a la URL correcta)
             className="mt-6 inline-block px-8 py-3 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-colors"
           >
             Contactar a Soporte
