@@ -30,7 +30,7 @@ export default function BlogSection({ posts }) {
         {posts.map((post) => (
           <SwiperSlide key={post.id}>
             
-            {/* Las tarjetas 'bg-white' resaltan sobre el fondo 'stone-100' */}
+            {/* Las tarjetas 'bg-white' resaltan sobre el fondo 'stone-100'  */}
             <div className="bg-white rounded-lg shadow-xl overflow-hidden h-[28rem]">
               <div className="flex h-full">
                 
