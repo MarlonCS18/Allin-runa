@@ -57,7 +57,7 @@ export default function BlogPage() {
             initial="hidden"
             animate="visible"
           >
-            Blog Natural Saludable
+            Blog Orgánico Saludable 2026
           </motion.h1>
           <motion.p 
             className="text-xl md:text-2xl"
