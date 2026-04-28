@@ -11,7 +11,7 @@ import ProductCard, { fadeInUp } from './ProductCard';
 import FilterGroup from './FilterGroup';
 
 // Definimos las categorías
-const categories = ["Superfoods", "Despensa Saludable", "Bienestar", "Cuidado Personal"];
+const categories = ["Super Foods", "Despensa Saludable", "Bienestar", "Cuidado Personal"];
 
 // Animaciones
 const staggerContainer = {
@@ -143,7 +143,7 @@ export default function TiendaContenido({ allProducts, initialCategory = 'Todos'
             Nuestra Tienda
           </h1>
           <p className="text-xl md:text-2xl">
-            Descubre la colección completa de productos orgánicos Allin Runa.
+            Descubre la colección completa de productos orgánicos.
           </p>
         </motion.div>
       </section>
