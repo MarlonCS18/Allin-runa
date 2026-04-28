@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 // --- Variantes de Animación ---
 
-// 1. Variante para el CONTENEDOR (el 'div' principal)
+// 1. Variante para el CONTENEDOR ( el 'div' principal)
 // Esto hará que los hijos (título, párrafo, botón) aparezcan en secuencia
 const containerVariants = {
   hidden: { opacity: 0 },
