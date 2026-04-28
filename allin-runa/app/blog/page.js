@@ -57,7 +57,7 @@ export default function BlogPage() {
             initial="hidden"
             animate="visible"
           >
-            Nuestro Blog
+            Nuestro Blog Orgánicos
           </motion.h1>
           <motion.p 
             className="text-xl md:text-2xl"
